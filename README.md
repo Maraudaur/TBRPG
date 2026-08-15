@@ -15,10 +15,11 @@ Everything in a fight — abilities, passives, gear affixes, status effects — 
 
 The point isn't just to simulate one hand-authored kit — it's to make the system open-ended enough that *anyone* can sit down, combine a handful of Triggers/Conditions/Effects, and find out whether the resulting build is actually interesting to play. Row positioning, burn-stack-and-consume combos, party-wide auras, ally-reactive passives, crit-triggered chains — none of these are special-cased; they all fall out of the same small vocabulary. If you want to try designing a build, start on the **Reference** tab to see the full toolbox, then jump into the Abilities/Passives builders and Test Combat to see how it plays.
 
-Two docs in this repo go deeper if you want to build content by hand:
+If you want to build content by hand:
 
 - [`how-to-make-abilities-and-passives.md`](./how-to-make-abilities-and-passives.md) — the full parameter reference and worked recipes for the Trigger/Condition/Effect system.
-- [`fire-build-abilities-and-passives-todo.md`](./fire-build-abilities-and-passives-todo.md) — a complete worked example: a 6-person "burn stacking and detonation" party build, designed end-to-end using the system to show what a real build looks like.
+
+There's already a training dummy enemy party to test against, and an initial basic fire party to use as well.
 
 ## Running it
 
