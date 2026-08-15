@@ -1,0 +1,57 @@
+:root {
+  --text: #2a2a33;
+  --text-h: #08060d;
+  --bg: #f7f7f9;
+  --panel-bg: #ffffff;
+  --border: #d8d8de;
+  --code-bg: #f4f3ec;
+  --accent: #6a3bff;
+  --accent-bg: rgba(106, 59, 255, 0.08);
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 14px/145% var(--sans);
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 8px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 2px 5px;
+  background: var(--code-bg);
+  border-radius: 3px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+select, input[type='text'], input[type='number'] {
+  font: inherit;
+}
