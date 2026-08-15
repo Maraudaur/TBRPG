@@ -1,32 +1,34 @@
-# React + TypeScript + Vite
+# Iron & Jade — Battle Sim
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A browser-based turn-based RPG battle simulator and build sandbox. It exists to answer one question fast: **is this combat system actually fun before anyone commits to full production art or code?**
 
-Currently, two official plugins are available:
+Everything in a fight — abilities, passives, gear affixes, status effects — is built from the same underlying shape: a `Trigger` (when this fires), a list of `Conditions` (only if these are true), and a list of `Effects` (do these things). That's it. There's no separate hardcoded "ability logic" layer, which means new mechanics can be invented entirely by combining existing pieces, without touching any code.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What you can do here
 
-## React Compiler
+- Build characters, enemies, gear, abilities, passives, and statuses, all from in-app editors.
+- Assemble parties (front row / back row) for both your side and the enemy side.
+- Run a fight two ways: **Auto-Simulate** for an instant full result, or **Test Combat**'s interactive mode to play it move-by-move, with a timed replay that steps through triggers/chains as they resolve so you can actually watch a combo happen instead of just reading a log after the fact.
+- Read every trigger, condition, effect, and element interaction in one place on the **Reference** tab — open it once the app is running to see exactly what's available and how each piece behaves.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Why it's built this way
 
-## Expanding the Oxlint configuration
+The point isn't just to simulate one hand-authored kit — it's to make the system open-ended enough that *anyone* can sit down, combine a handful of Triggers/Conditions/Effects, and find out whether the resulting build is actually interesting to play. Row positioning, burn-stack-and-consume combos, party-wide auras, ally-reactive passives, crit-triggered chains — none of these are special-cased; they all fall out of the same small vocabulary. If you want to try designing a build, start on the **Reference** tab to see the full toolbox, then jump into the Abilities/Passives builders and Test Combat to see how it plays.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Two docs in this repo go deeper if you want to build content by hand:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- [`how-to-make-abilities-and-passives.md`](./how-to-make-abilities-and-passives.md) — the full parameter reference and worked recipes for the Trigger/Condition/Effect system.
+- [`fire-build-abilities-and-passives-todo.md`](./fire-build-abilities-and-passives-todo.md) — a complete worked example: a 6-person "burn stacking and detonation" party build, designed end-to-end using the system to show what a real build looks like.
+
+## Running it
+
+**Easiest:** double-click `Run Battle Sim.bat`. It'll install dependencies on first run and open the app in your browser.
+
+**Manual:**
 ```
+npm install
+npm run dev
+```
+Then open the local URL it prints (usually `http://localhost:5173`).
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Other useful scripts: `npm run test` (unit tests), `npm run headless` (runs a hardcoded battle straight from the terminal, useful for sanity-checking the engine without the UI), `npm run build` (production build).
