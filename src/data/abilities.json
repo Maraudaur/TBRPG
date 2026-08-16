@@ -1,0 +1,1526 @@
+{
+  "fireball": {
+    "id": "fireball",
+    "name": "Fireball",
+    "description": "Hurls a ball of fire, applying burn stacks to the target.",
+    "apCost": 3,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "fireball_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.3",
+            "element": "fire"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 2,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "ice_shard": {
+    "id": "ice_shard",
+    "name": "Ice Shard",
+    "description": "Launches a shard of ice, applying frost stacks to the target.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "ice",
+    "bindings": [
+      {
+        "id": "ice_shard_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 0.9",
+            "element": "ice"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "frost",
+            "stacks": 2,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "mend": {
+    "id": "mend",
+    "name": "Mend",
+    "description": "Channels holy energy to heal an ally.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "mend_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.5 + 10"
+          }
+        ]
+      }
+    ]
+  },
+  "slash": {
+    "id": "slash",
+    "name": "Slash",
+    "description": "A quick, cheap physical strike.",
+    "apCost": 1,
+    "targetType": "singleEnemy",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "slash_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.2",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "cleave": {
+    "id": "cleave",
+    "name": "Cleave",
+    "description": "A sweeping physical strike that hits all enemies.",
+    "apCost": 4,
+    "targetType": "allEnemies",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "cleave_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "atk * 0.8",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "combustion": {
+    "id": "combustion",
+    "name": "Combustion",
+    "description": "Detonates the target's burn stacks for a fire-magic burst that scales with the caster's magic attack, then clears all remaining burn from the target.",
+    "apCost": 4,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "combustion_cast",
+        "name": "Combustion",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "target",
+            "status": "burn",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.8 + stacksConsumed * 7",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "ember_bolt": {
+    "id": "ember_bolt",
+    "name": "Ember Bolt",
+    "description": "Cheap single-target fire poke. The default spammable burn generator.",
+    "apCost": 1,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "ember_bolt_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 0.6",
+            "element": "fire"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "wildfire": {
+    "id": "wildfire",
+    "name": "Wildfire",
+    "description": "AoE fire spell — moderate damage and a burn stack to every enemy.",
+    "apCost": 4,
+    "targetType": "allEnemies",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "wildfire_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 0.9",
+            "element": "fire"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "allEnemies",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "kindling_strike": {
+    "id": "kindling_strike",
+    "name": "Kindling Strike",
+    "description": "A cheap weapon attack that also applies a burn stack — feeds the stack pool even on AP-starved turns.",
+    "apCost": 1,
+    "targetType": "singleEnemy",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "kindling_strike_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 0.9",
+            "element": "physical"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "rekindle": {
+    "id": "rekindle",
+    "name": "Rekindle",
+    "description": "Refreshes a target's burn duration without dealing real damage — buys time for the Detonator's turn.",
+    "apCost": 1,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "rekindle_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 0,
+            "duration": 5
+          }
+        ]
+      }
+    ]
+  },
+  "pyroclasm": {
+    "id": "pyroclasm",
+    "name": "Pyroclasm",
+    "description": "Detonator's ultimate — consumes ALL burn across every enemy at once for a shared damage burst scaled by the party's total stacks applied across the field.",
+    "apCost": 6,
+    "targetType": "allEnemies",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "pyroclasm_cast",
+        "name": "Pyroclasm",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "allEnemies",
+            "status": "burn",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 1.5 + stacksConsumed * 3",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "second_wind": {
+    "id": "second_wind",
+    "name": "Second Wind",
+    "description": "A chosen ally acts again immediately — chain into another action off a big Pyroclasm, or squeeze in one more stack application.",
+    "apCost": 3,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "second_wind_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "GrantExtraTurn",
+            "target": "target"
+          }
+        ]
+      }
+    ]
+  },
+  "stoke_the_fire": {
+    "id": "stoke_the_fire",
+    "name": "Stoke the Fire",
+    "description": "Buffs a chosen ally's magic attack — cast it on the Detonator right before Combustion/Pyroclasm.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "stoke_the_fire_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentAdd",
+            "value": 0.25,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "embers_retreat": {
+    "id": "embers_retreat",
+    "name": "Ember's Retreat",
+    "description": "After a stack-dumping turn, fall back to the back row to get out of enemy targeting range.",
+    "apCost": 1,
+    "targetType": "self",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "embers_retreat_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "evasion",
+            "modType": "percentAdd",
+            "value": 0.2,
+            "duration": 1
+          },
+          {
+            "type": "SwitchRow",
+            "target": "self",
+            "row": "back"
+          }
+        ]
+      }
+    ]
+  },
+  "myriad_swords": {
+    "id": "myriad_swords",
+    "name": "Myriad Swords",
+    "description": "Cheap, single-target, crit-hungry — the button the extra-turn loop spams.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "myriad_swords_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.5",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "sword_domain": {
+    "id": "sword_domain",
+    "name": "Sword Domain",
+    "description": "Opener/AoE to spread the first crits across a wave.",
+    "apCost": 3,
+    "targetType": "allEnemies",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "sword_domain_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "atk * 1.0",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "provoking_stance": {
+    "id": "provoking_stance",
+    "name": "Provoking Stance",
+    "description": "A durable turtle-up that also nudges enemy AI aggro via chip damage.",
+    "apCost": 1,
+    "targetType": "self",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "provoking_stance_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.4,
+            "duration": 2
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "atk * 0.4",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "piercing_thread": {
+    "id": "piercing_thread",
+    "name": "Piercing Thread",
+    "description": "Independent crit source to seed the Echo network on turns the Immortal is setting up.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "piercing_thread_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.3",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "mending_talisman": {
+    "id": "mending_talisman",
+    "name": "Mending Talisman",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "mending_talisman_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.6 + 15"
+          }
+        ]
+      }
+    ]
+  },
+  "cleansing_rain": {
+    "id": "cleansing_rain",
+    "name": "Cleansing Rain",
+    "apCost": 3,
+    "targetType": "allAllies",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "cleansing_rain_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.9"
+          }
+        ]
+      }
+    ]
+  },
+  "blade_retreat": {
+    "id": "blade_retreat",
+    "name": "Blade-Retreat",
+    "description": "Pull a spent or exposed attacker to safety the instant their storm is done.",
+    "apCost": 1,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "blade_retreat_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target",
+            "row": "back"
+          }
+        ]
+      }
+    ]
+  },
+  "vanguard_call": {
+    "id": "vanguard_call",
+    "name": "Vanguard Call",
+    "description": "Push the Immortal up and prime it right before its turn.",
+    "apCost": 1,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "vanguard_call_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target",
+            "row": "front"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.15,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "ninefold_descent": {
+    "id": "ninefold_descent",
+    "name": "Ninefold Descent",
+    "description": "The detonation: consumes all banked tribulation for a stacksConsumed-scaled lightning burst.",
+    "apCost": 4,
+    "targetType": "allEnemies",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "ninefold_descent_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "self",
+            "status": "tribulation",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 2 + stacksConsumed * 12",
+            "element": "lightning"
+          }
+        ]
+      }
+    ]
+  },
+  "gathering_cloud": {
+    "id": "gathering_cloud",
+    "name": "Gathering Cloud",
+    "description": "A turn spent deliberately overcharging when the detonation isn't lethal yet.",
+    "apCost": 1,
+    "targetType": "self",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "gathering_cloud_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "tribulation",
+            "stacks": 3,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "spark_rain": {
+    "id": "spark_rain",
+    "name": "Spark Rain",
+    "description": "Cheap lightning ticks that also trip \"Herald the Storm.\"",
+    "apCost": 2,
+    "targetType": "allEnemies",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "spark_rain_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 0.8",
+            "element": "lightning"
+          }
+        ]
+      }
+    ]
+  },
+  "earthen_bulwark": {
+    "id": "earthen_bulwark",
+    "name": "Earthen Bulwark",
+    "description": "Party-wide magic-defense wall to survive the long charge-up phase.",
+    "apCost": 2,
+    "targetType": "allAllies",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "earthen_bulwark_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "mdef",
+            "modType": "percentAdd",
+            "value": 0.25,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "consecrate": {
+    "id": "consecrate",
+    "name": "Consecrate",
+    "description": "Bank it on the Ascendant before a detonation to multiply the whole stacksConsumed payload.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "consecrate_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.2,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "downpour": {
+    "id": "downpour",
+    "name": "Downpour",
+    "apCost": 3,
+    "targetType": "allAllies",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "downpour_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 1.1 + 10"
+          }
+        ]
+      }
+    ]
+  },
+  "hasten_the_heavens": {
+    "id": "hasten_the_heavens",
+    "name": "Hasten the Heavens",
+    "description": "Hand the Ascendant its detonation turn early when the reservoir is already lethal.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "hasten_the_heavens_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "GrantExtraTurn",
+            "target": "target"
+          }
+        ]
+      }
+    ]
+  },
+  "windshift": {
+    "id": "windshift",
+    "name": "Windshift",
+    "description": "Reposition the Sentinel or Ascendant as the fight develops.",
+    "apCost": 1,
+    "targetType": "singleAlly",
+    "element": "lightning",
+    "bindings": [
+      {
+        "id": "windshift_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target"
+          }
+        ]
+      }
+    ]
+  },
+  "blood_offering": {
+    "id": "blood_offering",
+    "name": "Blood Offering",
+    "description": "Deliberate self-harm to force a threshold crossing early, turning the comeback mechanic into a controllable button — and the offered blood empowers the next strike, granting a 1-turn atk buff.",
+    "apCost": 1,
+    "targetType": "self",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "blood_offering_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "self",
+            "formula": "level * 6",
+            "element": "dark"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "atk",
+            "modType": "percentMult",
+            "value": 0.2,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "crimson_rend": {
+    "id": "crimson_rend",
+    "name": "Crimson Rend",
+    "description": "The bread-and-butter that the Qi Deviation multipliers inflate. Costs 5% of the caster's own max HP to cast — blood-path techniques are paid for in blood.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "crimson_rend_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.7",
+            "element": "dark"
+          },
+          {
+            "type": "DealDamage",
+            "target": "self",
+            "formula": "targetMaxHp * 0.05",
+            "element": "dark"
+          }
+        ]
+      }
+    ]
+  },
+  "sever_the_thread": {
+    "id": "sever_the_thread",
+    "name": "Sever the Thread",
+    "description": "Linear execute: bonus approaches +20% of the target's max HP as it drops.",
+    "apCost": 3,
+    "targetType": "singleEnemy",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "sever_the_thread_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.5 + targetMaxHp * 0.20 - targetCurrentHp * 0.20",
+            "element": "dark"
+          }
+        ]
+      }
+    ]
+  },
+  "crimson_communion": {
+    "id": "crimson_communion",
+    "name": "Crimson Communion",
+    "description": "Can be aimed at the Sovereign to shove it under a threshold on demand while also buffing it.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "crimson_communion_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "level * 8",
+            "element": "dark"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.2,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "grave_taunt": {
+    "id": "grave_taunt",
+    "name": "Grave Taunt",
+    "apCost": 2,
+    "targetType": "self",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "grave_taunt_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.4,
+            "duration": 2
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "atk * 0.5",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "rupture": {
+    "id": "rupture",
+    "name": "Rupture",
+    "description": "Cash in every bleed the party layered on.",
+    "apCost": 3,
+    "targetType": "singleEnemy",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "rupture_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "target",
+            "status": "hemorrhage",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.4 + stacksConsumed * 16",
+            "element": "dark"
+          }
+        ]
+      }
+    ]
+  },
+  "bloodspray": {
+    "id": "bloodspray",
+    "name": "Bloodspray",
+    "apCost": 2,
+    "targetType": "allEnemies",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "bloodspray_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "atk * 0.9",
+            "element": "dark"
+          },
+          {
+            "type": "ApplyStatus",
+            "target": "allEnemies",
+            "status": "hemorrhage",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "blood_transfusion": {
+    "id": "blood_transfusion",
+    "name": "Blood Transfusion",
+    "apCost": 3,
+    "targetType": "singleAlly",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "blood_transfusion_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.7 + 15"
+          }
+        ]
+      }
+    ]
+  },
+  "curse_of_frailty": {
+    "id": "curse_of_frailty",
+    "name": "Curse of Frailty",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "curse_of_frailty_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": -0.4,
+            "duration": 3
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "mdef",
+            "modType": "percentAdd",
+            "value": -0.4,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "blood_beckon": {
+    "id": "blood_beckon",
+    "name": "Blood Beckon",
+    "description": "Hand the Sovereign an extra action the turn it comes fully online.",
+    "apCost": 1,
+    "targetType": "singleAlly",
+    "element": "dark",
+    "bindings": [
+      {
+        "id": "blood_beckon_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "GrantExtraTurn",
+            "target": "target"
+          }
+        ]
+      }
+    ]
+  },
+  "phantom_step": {
+    "id": "phantom_step",
+    "name": "Phantom Step",
+    "description": "Her core tempo button — one cast = one row change = one Afterimage proc + fox_fire.",
+    "apCost": 1,
+    "targetType": "self",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "phantom_step_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "self"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 0.5",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "illusory_collapse": {
+    "id": "illusory_collapse",
+    "name": "Illusory Collapse",
+    "description": "Cash in a run of accumulated dances.",
+    "apCost": 3,
+    "targetType": "allEnemies",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "illusory_collapse_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "self",
+            "status": "fox_fire",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 1.3 + stacksConsumed * 14",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "shared_reflection": {
+    "id": "shared_reflection",
+    "name": "Shared Reflection",
+    "description": "Move an ally and buff them — triggers their own OnRowChanged procs on the Disciple's turn.",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "shared_reflection_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.12,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "displacing_palm": {
+    "id": "displacing_palm",
+    "name": "Displacing Palm",
+    "description": "Shove an enemy attacker to the back row, where it cannot take its turn-action — pure tempo denial.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "displacing_palm_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.2",
+            "element": "physical"
+          },
+          {
+            "type": "SwitchRow",
+            "target": "target",
+            "row": "back"
+          }
+        ]
+      }
+    ]
+  },
+  "mirror_burst": {
+    "id": "mirror_burst",
+    "name": "Mirror Burst",
+    "description": "A second, independent fox_fire cash-in.",
+    "apCost": 3,
+    "targetType": "allEnemies",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "mirror_burst_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "self",
+            "status": "fox_fire",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 1.1 + stacksConsumed * 12",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "blink_strike": {
+    "id": "blink_strike",
+    "name": "Blink Strike",
+    "description": "Attack and reposition in one motion.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "blink_strike_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.4",
+            "element": "fire"
+          },
+          {
+            "type": "SwitchRow",
+            "target": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "beguiling_shift": {
+    "id": "beguiling_shift",
+    "name": "Beguiling Shift",
+    "description": "Second enemy-displacement tool to lock two attackers out of acting.",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "beguiling_shift_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target",
+            "row": "back"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "evasion",
+            "modType": "percentAdd",
+            "value": -0.3,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "foxs_grace": {
+    "id": "foxs_grace",
+    "name": "Fox's Grace",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "foxs_grace_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "SwitchRow",
+            "target": "target"
+          },
+          {
+            "type": "ModifyAP",
+            "target": "target",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "nine_tails_blessing": {
+    "id": "nine_tails_blessing",
+    "name": "Nine-Tails Blessing",
+    "apCost": 3,
+    "targetType": "singleAlly",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "nine_tails_blessing_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.7 + 15"
+          }
+        ]
+      }
+    ]
+  },
+  "veil_of_renewal": {
+    "id": "veil_of_renewal",
+    "name": "Veil of Renewal",
+    "apCost": 3,
+    "targetType": "allAllies",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "veil_of_renewal_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.8"
+          }
+        ]
+      }
+    ]
+  },
+  "taiji_nova": {
+    "id": "taiji_nova",
+    "name": "Taiji Nova",
+    "description": "Harmonized (neutral) so no element resist blunts it.",
+    "apCost": 4,
+    "targetType": "allEnemies",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "taiji_nova_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "self",
+            "status": "wuxing_harmony",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 1.6 + stacksConsumed * 11",
+            "element": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  "balance_strike": {
+    "id": "balance_strike",
+    "name": "Balance Strike",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "balance_strike_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.4",
+            "element": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  "verdant_surge": {
+    "id": "verdant_surge",
+    "name": "Verdant Surge",
+    "apCost": 2,
+    "targetType": "singleAlly",
+    "element": "neutral",
+    "bindings": [
+      {
+        "id": "verdant_surge_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.5 + 12"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "blaze_cascade": {
+    "id": "blaze_cascade",
+    "name": "Blaze Cascade",
+    "apCost": 3,
+    "targetType": "allEnemies",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "blaze_cascade_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 1.2",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "searing_lance": {
+    "id": "searing_lance",
+    "name": "Searing Lance",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "fire",
+    "bindings": [
+      {
+        "id": "searing_lance_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.5",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "tectonic_guard": {
+    "id": "tectonic_guard",
+    "name": "Tectonic Guard",
+    "apCost": 2,
+    "targetType": "allAllies",
+    "element": "physical",
+    "bindings": [
+      {
+        "id": "tectonic_guard_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.25,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "thousand_edge_cut": {
+    "id": "thousand_edge_cut",
+    "name": "Thousand-Edge Cut",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "holy",
+    "bindings": [
+      {
+        "id": "thousand_edge_cut_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 1.5",
+            "element": "holy"
+          }
+        ]
+      }
+    ]
+  },
+  "tidal_slow": {
+    "id": "tidal_slow",
+    "name": "Tidal Slow",
+    "apCost": 2,
+    "targetType": "singleEnemy",
+    "element": "ice",
+    "bindings": [
+      {
+        "id": "tidal_slow_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.2",
+            "element": "ice"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "speed",
+            "modType": "percentMult",
+            "value": -0.3,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "nourishing_wave": {
+    "id": "nourishing_wave",
+    "name": "Nourishing Wave",
+    "apCost": 3,
+    "targetType": "allAllies",
+    "element": "ice",
+    "bindings": [
+      {
+        "id": "nourishing_wave_cast",
+        "trigger": "OnAbilityCast",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.9 + 10"
+          }
+        ]
+      }
+    ]
+  }
+}

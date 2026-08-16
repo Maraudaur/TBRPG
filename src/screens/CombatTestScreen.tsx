@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Ability, Effect, EffectTarget, StatBlock, StatModifier } from '../sim/types';
+import type { Ability, Binding, Effect, EffectTarget, PassiveDef, StatBlock, StatModifier, TriggerType } from '../sim/types';
 import { STAT_KEYS } from '../sim/types';
 import type { BattleUnit, LogEntry, Team } from '../sim/runtime';
 import type { EventBus } from '../sim/eventBus';
@@ -138,6 +138,30 @@ function describeAbility(ability: Ability): { lines: string[]; hasConditions: bo
   const lines = castBindings.flatMap((b) => b.effects.map(describeEffect));
   const hasConditions = castBindings.some((b) => b.conditions.length > 0);
   return { lines, hasConditions };
+}
+
+// Plain-language "when this fires" wording per trigger, used to describe a
+// passive's bindings in the unit detail panel (a passive can carry any
+// trigger type, unlike an ability's OnAbilityCast-only bindings above).
+const TRIGGER_LABELS: Record<TriggerType, string> = {
+  OnBattleStart: 'When the battle starts',
+  OnTurnStart: 'At the start of its turn',
+  OnAbilityCast: 'When an ability is cast',
+  OnDamageDealt: 'When it deals damage',
+  OnDamageTaken: 'When it takes damage',
+  OnStatusApplied: 'When a status is applied',
+  OnStatusExpired: 'When a status expires',
+  OnHPThresholdCrossed: 'When an HP threshold is crossed',
+  OnDeath: 'When a unit dies',
+  OnRowChanged: 'When a row changes',
+};
+
+/** One plain-English line per binding on a passive, e.g. "When it deals
+ * damage: Deal fire damage (matk * 0.6) to the target. (conditions apply)" */
+function describePassiveBinding(binding: Binding): string {
+  const effectText = binding.effects.map(describeEffect).join(' ');
+  const note = binding.conditions.length > 0 ? ' (conditions apply)' : '';
+  return `${TRIGGER_LABELS[binding.trigger]}: ${effectText}${note}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -522,6 +546,18 @@ export function CombatTestScreen() {
   const targetChoices =
     awaitingUnit && selectedAbility ? getValidTargets(awaitingUnit, selectedAbility, battleRef.current!.battle) : [];
   const selectedUnit = selectedUnitId ? units.find((u) => u.id === selectedUnitId) : undefined;
+  // A BattleUnit only carries aggregated reactive *bindings*, not which named
+  // passives they came from — look the unit's definition back up (character
+  // or enemy, depending on team) to get its `passives: string[]` and resolve
+  // each one to its full PassiveDef for display.
+  const selectedUnitPassives: PassiveDef[] = selectedUnit
+    ? (() => {
+        const def = selectedUnit.team === 'player' ? characterStore.get(selectedUnit.defId) : enemyStore.get(selectedUnit.defId);
+        return (def?.passives ?? [])
+          .map((id) => passiveStore.get(id))
+          .filter((p): p is PassiveDef => p !== undefined);
+      })()
+    : [];
   // While a replay is playing, the battlefield shows the animated snapshot
   // instead of the true (already-final) state; everything else (target
   // validity, the stat detail panel, etc.) always reads the true `units`.
@@ -879,6 +915,25 @@ export function CombatTestScreen() {
                   </li>
                 ))}
               </ul>
+            )}
+
+            <h4>Passives</h4>
+            {selectedUnitPassives.length === 0 ? (
+              <div className="hint">none</div>
+            ) : (
+              <div className="unit-detail-passives">
+                {selectedUnitPassives.map((p) => (
+                  <div key={p.id} className="unit-detail-passive">
+                    <div className="unit-detail-passive-name">{p.name}</div>
+                    {p.description && <p className="unit-detail-passive-desc">{p.description}</p>}
+                    <ul className="unit-detail-passive-effects">
+                      {p.bindings.map((b, i) => (
+                        <li key={b.id ?? i}>{describePassiveBinding(b)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>

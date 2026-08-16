@@ -1,0 +1,1472 @@
+{
+  "last_stand": {
+    "id": "last_stand",
+    "name": "Last Stand",
+    "description": "Gain a large evasion boost for 2 turns the first time HP drops below 25%.",
+    "bindings": [
+      {
+        "id": "last_stand_trigger",
+        "name": "Last Stand",
+        "trigger": "OnHPThresholdCrossed",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "evasion",
+            "modType": "percentAdd",
+            "value": 0.3,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "reckless_momentum": {
+    "id": "reckless_momentum",
+    "name": "Reckless Momentum",
+    "description": "Whenever this unit deals damage, gain 1 AP.",
+    "bindings": [
+      {
+        "id": "reckless_momentum_tick",
+        "name": "Reckless Momentum",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "ashfire_focus": {
+    "id": "ashfire_focus",
+    "name": "Ashfire Focus",
+    "description": "Party-wide, permanent while alive: the whole party's magic attack goes up for the fight, granted once at battle start. If the holder dies mid-battle, the boost disappears from everyone who had it.",
+    "bindings": [
+      {
+        "id": "ashfire_focus_grant",
+        "name": "Ashfire Focus",
+        "trigger": "OnBattleStart",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "matk",
+            "modType": "percentAdd",
+            "value": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  "smoldering_wounds": {
+    "id": "smoldering_wounds",
+    "name": "Smoldering Wounds",
+    "description": "Personal: bonus fire damage against a target that is already burning.",
+    "bindings": [
+      {
+        "id": "smoldering_wounds_tick",
+        "name": "Smoldering Wounds",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "hasStatus",
+            "target": "target",
+            "status": "burn",
+            "min": 1
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 0.3",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "critical_cinder": {
+    "id": "critical_cinder",
+    "name": "Critical Cinder",
+    "description": "Personal: critical fire hits apply a bonus burn stack.",
+    "bindings": [
+      {
+        "id": "critical_cinder_tick",
+        "name": "Critical Cinder",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "fan_the_flames": {
+    "id": "fan_the_flames",
+    "name": "Fan the Flames",
+    "description": "Personal: chance for a fire hit to apply an extra burn stack.",
+    "bindings": [
+      {
+        "id": "fan_the_flames_tick",
+        "name": "Fan the Flames",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "chance",
+            "probability": 0.35
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "kindling_sync": {
+    "id": "kindling_sync",
+    "name": "Kindling Sync",
+    "description": "Ally-reactive: whenever an ally (not the holder) applies a burn stack to an enemy, the holder gains 1 AP. Meant for the Detonator — the more the Igniters spam, the faster the payoff charges.",
+    "bindings": [
+      {
+        "id": "kindling_sync_tick",
+        "name": "Kindling Sync",
+        "trigger": "OnStatusApplied",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "hasStatus",
+            "target": "target",
+            "status": "burn",
+            "min": 1
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "phoenix_guard": {
+    "id": "phoenix_guard",
+    "name": "Phoenix Guard",
+    "description": "Ally-reactive, party-wide safety net: whenever an ally falls back to the back row, heal them a little on the way out.",
+    "bindings": [
+      {
+        "id": "phoenix_guard_tick",
+        "name": "Phoenix Guard",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "row",
+            "target": "target",
+            "row": "back"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 0.4 + 10"
+          }
+        ]
+      }
+    ]
+  },
+  "vanguards_ignition": {
+    "id": "vanguards_ignition",
+    "name": "Vanguard's Ignition",
+    "description": "Ally-reactive: whenever an ally steps up to the front row (death-triggered promotion or a deliberate SwitchRow cast on them), they get a brief magic attack surge.",
+    "bindings": [
+      {
+        "id": "vanguards_ignition_tick",
+        "name": "Vanguard's Ignition",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "row",
+            "target": "target",
+            "row": "front"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentAdd",
+            "value": 0.15,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "ashfall": {
+    "id": "ashfall",
+    "name": "Ashfall",
+    "description": "Personal, ability-specific: the instant the holder's own Combustion detonates, a light dusting of embers reseeds 1 burn stack on every other enemy.",
+    "bindings": [
+      {
+        "id": "ashfall_tick",
+        "name": "Ashfall",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "abilityIs",
+            "value": "combustion"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "allEnemies",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "overflow": {
+    "id": "overflow",
+    "name": "Overflow",
+    "description": "Personal: a bonus fire hit on a target the instant the holder's own ConsumeStatus fully clears their status. Flat amount — not scaled by stacks consumed (see fire-build doc for why).",
+    "bindings": [
+      {
+        "id": "overflow_tick",
+        "name": "Overflow",
+        "trigger": "OnStatusExpired",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 0.5",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "cascading_embers": {
+    "id": "cascading_embers",
+    "name": "Cascading Embers",
+    "description": "Party-wide: detonating a target refunds AP to the whole party, not just the Detonator, so everyone can chain off the big consume moment.",
+    "bindings": [
+      {
+        "id": "cascading_embers_tick",
+        "name": "Cascading Embers",
+        "trigger": "OnStatusExpired",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "allAllies",
+            "amount": 2
+          }
+        ]
+      }
+    ]
+  },
+  "flashpoint": {
+    "id": "flashpoint",
+    "name": "Flashpoint",
+    "description": "Personal: a fire hit has a chance to grant the caster an extra turn, chaining straight into another stack-applying cast.",
+    "bindings": [
+      {
+        "id": "flashpoint_tick",
+        "name": "Flashpoint",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "chance",
+            "probability": 0.2
+          }
+        ],
+        "effects": [
+          {
+            "type": "GrantExtraTurn",
+            "target": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "ignition_chain": {
+    "id": "ignition_chain",
+    "name": "Ignition Chain",
+    "description": "Personal, stretch: a chance for ANY fire ability cast to also tack on a burn stack, even ones that do not land damage.",
+    "bindings": [
+      {
+        "id": "ignition_chain_tick",
+        "name": "Ignition Chain",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "chance",
+            "probability": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "burn",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "sword_heart_cascade": {
+    "id": "sword_heart_cascade",
+    "name": "Sword Heart Cascade",
+    "description": "The chain engine: crits have a chance to grant an extra turn, unspooling a sword-storm.",
+    "bindings": [
+      {
+        "id": "sword_heart_cascade_tick",
+        "name": "Sword Heart Cascade",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "wasCrit"
+          },
+          {
+            "type": "chance",
+            "probability": 0.4
+          }
+        ],
+        "effects": [
+          {
+            "type": "GrantExtraTurn",
+            "target": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "flowing_blades": {
+    "id": "flowing_blades",
+    "name": "Flowing Blades",
+    "description": "In-turn compounder: each crit multiplies the next crit's damage.",
+    "bindings": [
+      {
+        "id": "flowing_blades_tick",
+        "name": "Flowing Blades",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "critDamage",
+            "modType": "percentMult",
+            "value": 0.08,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "song_of_ten_thousand_edges": {
+    "id": "song_of_ten_thousand_edges",
+    "name": "Song of Ten Thousand Edges",
+    "description": "Cross-unit AP funnel: every ally crit hands AP back to that ally.",
+    "bindings": [
+      {
+        "id": "song_of_ten_thousand_edges_tick",
+        "name": "Song of Ten Thousand Edges",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "source",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "rising_chord": {
+    "id": "rising_chord",
+    "name": "Rising Chord",
+    "description": "Permanent, survival-tethered crit-chance aura for the whole party.",
+    "bindings": [
+      {
+        "id": "rising_chord_grant",
+        "name": "Rising Chord",
+        "trigger": "OnBattleStart",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.15
+          }
+        ]
+      }
+    ]
+  },
+  "sharpening_duty": {
+    "id": "sharpening_duty",
+    "name": "Sharpening Duty",
+    "description": "The Warden turning damage into party crit-damage.",
+    "bindings": [
+      {
+        "id": "sharpening_duty_tick",
+        "name": "Sharpening Duty",
+        "trigger": "OnDamageTaken",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "critDamage",
+            "modType": "percentMult",
+            "value": 0.06,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "echoing_blade": {
+    "id": "echoing_blade",
+    "name": "Echoing Blade",
+    "description": "Bounded teammate retrigger: an extra sword-hit whenever another unit crits.",
+    "bindings": [
+      {
+        "id": "echoing_blade_tick",
+        "name": "Echoing Blade",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "atk * 0.7",
+            "element": "physical"
+          }
+        ]
+      }
+    ]
+  },
+  "life_in_the_blade_song": {
+    "id": "life_in_the_blade_song",
+    "name": "Life in the Blade-Song",
+    "description": "Turns the crit storm into party sustain.",
+    "bindings": [
+      {
+        "id": "life_in_the_blade_song_tick",
+        "name": "Life in the Blade-Song",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "source",
+            "formula": "matk * 0.4"
+          }
+        ]
+      }
+    ]
+  },
+  "windstep_reserve": {
+    "id": "windstep_reserve",
+    "name": "Windstep Reserve",
+    "description": "Crit-damage compounder aura, multiplying with the other two sources.",
+    "bindings": [
+      {
+        "id": "windstep_reserve_grant",
+        "name": "Windstep Reserve",
+        "trigger": "OnBattleStart",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "critDamage",
+            "modType": "percentMult",
+            "value": 0.15
+          }
+        ]
+      }
+    ]
+  },
+  "court_the_heavens": {
+    "id": "court_the_heavens",
+    "name": "Court the Heavens",
+    "description": "Cross-unit intake: every single ally action funnels one tribulation charge onto the carry.",
+    "bindings": [
+      {
+        "id": "court_the_heavens_tick",
+        "name": "Court the Heavens",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "tribulation",
+            "stacks": 1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "storm_fed": {
+    "id": "storm_fed",
+    "name": "Storm-Fed",
+    "description": "Taking hits also charges the sky.",
+    "bindings": [
+      {
+        "id": "storm_fed_tick",
+        "name": "Storm-Fed",
+        "trigger": "OnDamageTaken",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "tribulation",
+            "stacks": 1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "herald_the_storm": {
+    "id": "herald_the_storm",
+    "name": "Herald the Storm",
+    "description": "Fast-cast charge feed: stacks onto the ally who dealt the lightning hit.",
+    "bindings": [
+      {
+        "id": "herald_the_storm_tick",
+        "name": "Herald the Storm",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "element",
+            "value": "lightning"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "source",
+            "status": "tribulation",
+            "stacks": 1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "lightning_rod": {
+    "id": "lightning_rod",
+    "name": "Lightning Rod",
+    "description": "Builds its own AP by tanking and marks attackers.",
+    "bindings": [
+      {
+        "id": "lightning_rod_tick",
+        "name": "Lightning Rod",
+        "trigger": "OnDamageTaken",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "source",
+            "status": "grounded",
+            "stacks": 1,
+            "duration": 2
+          },
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "feed_the_ascension": {
+    "id": "feed_the_ascension",
+    "name": "Feed the Ascension",
+    "description": "AP funnel: turns the constant charge-application into party-wide AP.",
+    "bindings": [
+      {
+        "id": "feed_the_ascension_tick",
+        "name": "Feed the Ascension",
+        "trigger": "OnStatusApplied",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "chance",
+            "probability": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "allAllies",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "cloudburst_mercy": {
+    "id": "cloudburst_mercy",
+    "name": "Cloudburst Mercy",
+    "description": "Emergency heal the instant any ally dips under half.",
+    "bindings": [
+      {
+        "id": "cloudburst_mercy_tick",
+        "name": "Cloudburst Mercy",
+        "trigger": "OnHPThresholdCrossed",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "statCompare",
+            "target": "target",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.4"
+          }
+        ]
+      }
+    ]
+  },
+  "read_the_omens": {
+    "id": "read_the_omens",
+    "name": "Read the Omens",
+    "description": "Detonation-turn amplifier: recognizes the big cast and juices its crit multiplier.",
+    "bindings": [
+      {
+        "id": "read_the_omens_tick",
+        "name": "Read the Omens",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "abilityIs",
+            "value": "ninefold_descent"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "source",
+            "stat": "critDamage",
+            "modType": "percentMult",
+            "value": 0.25,
+            "duration": 1
+          }
+        ]
+      }
+    ]
+  },
+  "qi_deviation_i": {
+    "id": "qi_deviation_i",
+    "name": "Qi Deviation (I)",
+    "description": "Comeback breakpoint: permanent atk multiplier once under half HP.",
+    "bindings": [
+      {
+        "id": "qi_deviation_i_tick",
+        "name": "Qi Deviation (I)",
+        "trigger": "OnHPThresholdCrossed",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "atk",
+            "modType": "percentMult",
+            "value": 0.4
+          }
+        ]
+      }
+    ]
+  },
+  "qi_deviation_ii": {
+    "id": "qi_deviation_ii",
+    "name": "Qi Deviation (II)",
+    "description": "The two thresholds compound multiplicatively once under a quarter HP.",
+    "bindings": [
+      {
+        "id": "qi_deviation_ii_tick",
+        "name": "Qi Deviation (II)",
+        "trigger": "OnHPThresholdCrossed",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "atk",
+            "modType": "percentMult",
+            "value": 0.6
+          },
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "critDamage",
+            "modType": "percentMult",
+            "value": 0.4
+          }
+        ]
+      }
+    ]
+  },
+  "feast_on_suffering": {
+    "id": "feast_on_suffering",
+    "name": "Feast on Suffering",
+    "description": "Every wound the party suffers feeds the demon.",
+    "bindings": [
+      {
+        "id": "feast_on_suffering_tick",
+        "name": "Feast on Suffering",
+        "trigger": "OnDamageTaken",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "atk",
+            "modType": "percentMult",
+            "value": 0.05,
+            "duration": 3
+          },
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "shared_wounds": {
+    "id": "shared_wounds",
+    "name": "Shared Wounds",
+    "description": "Layers a bleed-marker on enemies the party is already hitting.",
+    "bindings": [
+      {
+        "id": "shared_wounds_tick",
+        "name": "Shared Wounds",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "chance",
+            "probability": 0.4
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "hemorrhage",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "bulwark_of_bone": {
+    "id": "bulwark_of_bone",
+    "name": "Bulwark of Bone",
+    "description": "Hardens allies once they hit the danger zone the build deliberately courts.",
+    "bindings": [
+      {
+        "id": "bulwark_of_bone_tick",
+        "name": "Bulwark of Bone",
+        "trigger": "OnDamageTaken",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "statCompare",
+            "target": "target",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.3,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "scent_of_blood": {
+    "id": "scent_of_blood",
+    "name": "Scent of Blood",
+    "description": "Gets more precise as targets bleed out.",
+    "bindings": [
+      {
+        "id": "scent_of_blood_tick",
+        "name": "Scent of Blood",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "target",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.1,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "stay_the_reaper": {
+    "id": "stay_the_reaper",
+    "name": "Stay the Reaper",
+    "description": "Keeps the Sovereign at the powerful low-HP band without letting it die.",
+    "bindings": [
+      {
+        "id": "stay_the_reaper_tick",
+        "name": "Stay the Reaper",
+        "trigger": "OnHPThresholdCrossed",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          },
+          {
+            "type": "statCompare",
+            "target": "target",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 1.6"
+          }
+        ]
+      }
+    ]
+  },
+  "doom_sense": {
+    "id": "doom_sense",
+    "name": "Doom Sense",
+    "description": "Chips low targets whenever an ally strikes them, helping secure kills.",
+    "bindings": [
+      {
+        "id": "doom_sense_tick",
+        "name": "Doom Sense",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "statCompare",
+            "target": "target",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "matk * 1.0",
+            "element": "dark"
+          }
+        ]
+      }
+    ]
+  },
+  "ninefold_afterimage": {
+    "id": "ninefold_afterimage",
+    "name": "Ninefold Afterimage",
+    "description": "The positioning engine: every time she moves she flickers out a burst and gets harder to hit.",
+    "bindings": [
+      {
+        "id": "ninefold_afterimage_tick",
+        "name": "Ninefold Afterimage",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "allEnemies",
+            "formula": "matk * 0.6",
+            "element": "fire"
+          },
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "evasion",
+            "modType": "percentAdd",
+            "value": 0.2,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "mirror_dance": {
+    "id": "mirror_dance",
+    "name": "Mirror Dance",
+    "description": "Every ally reposition refunds that ally AP and sharpens them.",
+    "bindings": [
+      {
+        "id": "mirror_dance_tick",
+        "name": "Mirror Dance",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "target",
+            "amount": 1
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.1,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "guardians_cadence": {
+    "id": "guardians_cadence",
+    "name": "Guardian's Cadence",
+    "description": "Whoever steps up (or back) gets a compounding hybrid buff.",
+    "bindings": [
+      {
+        "id": "guardians_cadence_tick",
+        "name": "Guardian's Cadence",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "atk",
+            "modType": "percentMult",
+            "value": 0.06,
+            "duration": 3
+          },
+          {
+            "type": "ModifyStat",
+            "target": "target",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.06,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "echoing_illusions": {
+    "id": "echoing_illusions",
+    "name": "Echoing Illusions",
+    "description": "Banks fox_fire off allies' movement too.",
+    "bindings": [
+      {
+        "id": "echoing_illusions_tick",
+        "name": "Echoing Illusions",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "fox_fire",
+            "stacks": 1,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "disorienting_presence": {
+    "id": "disorienting_presence",
+    "name": "Disorienting Presence",
+    "description": "The party's constant repositioning makes the enemy miss more.",
+    "bindings": [
+      {
+        "id": "disorienting_presence_tick",
+        "name": "Disorienting Presence",
+        "trigger": "OnRowChanged",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allEnemies",
+            "stat": "accuracy",
+            "modType": "percentAdd",
+            "value": -0.08,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "restorative_mist": {
+    "id": "restorative_mist",
+    "name": "Restorative Mist",
+    "bindings": [
+      {
+        "id": "restorative_mist_tick",
+        "name": "Restorative Mist",
+        "trigger": "OnTurnStart",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.2"
+          }
+        ]
+      }
+    ]
+  },
+  "convergence_of_five": {
+    "id": "convergence_of_five",
+    "name": "Convergence of Five",
+    "description": "Every elementalist's action conveys a charge to the Core.",
+    "bindings": [
+      {
+        "id": "convergence_of_five_tick",
+        "name": "Convergence of Five",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "wuxing_harmony",
+            "stacks": 1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "flourish": {
+    "id": "flourish",
+    "name": "Flourish",
+    "description": "Wood's contribution to the compounding ring.",
+    "bindings": [
+      {
+        "id": "flourish_tick",
+        "name": "Flourish",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "maxHp",
+            "modType": "percentAdd",
+            "value": 0.08,
+            "duration": 99
+          },
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.4"
+          }
+        ]
+      }
+    ]
+  },
+  "kindle_the_ring": {
+    "id": "kindle_the_ring",
+    "name": "Kindle the Ring",
+    "description": "Teammate relay amplifier: pushes power into the primary damage spoke.",
+    "bindings": [
+      {
+        "id": "kindle_the_ring_tick",
+        "name": "Kindle the Ring",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "chance",
+            "probability": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.05,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "steadfast_ground": {
+    "id": "steadfast_ground",
+    "name": "Steadfast Ground",
+    "description": "Earth's stabilizing spoke — lets the fragile ring survive long enough to complete the cycle.",
+    "bindings": [
+      {
+        "id": "steadfast_ground_tick",
+        "name": "Steadfast Ground",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "mdef",
+            "modType": "percentAdd",
+            "value": 0.1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "sharpened_cycle": {
+    "id": "sharpened_cycle",
+    "name": "Sharpened Cycle",
+    "description": "Metal \"cuts\" extra tempo into whoever crits, keeping the wheel spinning.",
+    "bindings": [
+      {
+        "id": "sharpened_cycle_tick",
+        "name": "Sharpened Cycle",
+        "trigger": "OnDamageDealt",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "wasCrit"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "source",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "flowing_return": {
+    "id": "flowing_return",
+    "name": "Flowing Return",
+    "description": "Water closes the cycle back to wood — the party's own activity keeps it topped up.",
+    "bindings": [
+      {
+        "id": "flowing_return_tick",
+        "name": "Flowing Return",
+        "trigger": "OnAbilityCast",
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "source"
+          },
+          {
+            "type": "chance",
+            "probability": 0.4
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.35"
+          }
+        ]
+      }
+    ]
+  }
+}

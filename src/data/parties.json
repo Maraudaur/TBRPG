@@ -1,0 +1,254 @@
+{
+  "default_party": {
+    "id": "default_party",
+    "name": "Default Party",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "bren_ironhide"
+      },
+      {
+        "slotIndex": 1,
+        "row": "front",
+        "characterId": null
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": null
+      },
+      {
+        "slotIndex": 3,
+        "row": "back",
+        "characterId": "kara_emberwright"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "sae_windrunner"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": null
+      }
+    ]
+  },
+  "fire_build_party": {
+    "id": "fire_build_party",
+    "name": "Fire Build Party",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "ryn_cinderveil"
+      },
+      {
+        "slotIndex": 1,
+        "row": "front",
+        "characterId": "tamsin_ashgrove"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "kessa_brightflare"
+      },
+      {
+        "slotIndex": 3,
+        "row": "back",
+        "characterId": "old_maren"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "wick_sparrow"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "dez_hollow"
+      }
+    ]
+  },
+  "sword_immortal_party": {
+    "id": "sword_immortal_party",
+    "name": "Ten Thousand Sword Immortal",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "sword_immortal"
+      },
+      {
+        "slotIndex": 1,
+        "row": "back",
+        "characterId": "sword_song_cantor"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "whetstone_warden"
+      },
+      {
+        "slotIndex": 3,
+        "row": "front",
+        "characterId": "flying_sword_echo"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "jade_talisman_adept"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "formation_disciple"
+      }
+    ]
+  },
+  "tribulation_party": {
+    "id": "tribulation_party",
+    "name": "Ninefold Heavenly Tribulation",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "tribulation_ascendant"
+      },
+      {
+        "slotIndex": 1,
+        "row": "back",
+        "characterId": "cloud_herald_diviner"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "grounding_sentinel"
+      },
+      {
+        "slotIndex": 3,
+        "row": "back",
+        "characterId": "thunder_rite_acolyte"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "rain_bearer_cleric"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "sky_reading_adept"
+      }
+    ]
+  },
+  "blood_path_party": {
+    "id": "blood_path_party",
+    "name": "Blood-Path Demon Cultivator",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "blood_sovereign"
+      },
+      {
+        "slotIndex": 1,
+        "row": "back",
+        "characterId": "sanguine_herald"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "bone_warden"
+      },
+      {
+        "slotIndex": 3,
+        "row": "front",
+        "characterId": "crimson_acolyte"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "marrow_priest"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "hex_diviner"
+      }
+    ]
+  },
+  "nine_tailed_fox_party": {
+    "id": "nine_tailed_fox_party",
+    "name": "Nine-Tailed Fox Illusionist",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "nine_tailed_matriarch"
+      },
+      {
+        "slotIndex": 1,
+        "row": "back",
+        "characterId": "mirror_image_disciple"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "vermilion_guard"
+      },
+      {
+        "slotIndex": 3,
+        "row": "front",
+        "characterId": "illusionist_twin"
+      },
+      {
+        "slotIndex": 4,
+        "row": "back",
+        "characterId": "charmer_of_mists"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "spirit_fox_healer"
+      }
+    ]
+  },
+  "five_elements_party": {
+    "id": "five_elements_party",
+    "name": "Five Elements Generative Cycle",
+    "slots": [
+      {
+        "slotIndex": 0,
+        "row": "front",
+        "characterId": "wuji_taiji_core"
+      },
+      {
+        "slotIndex": 1,
+        "row": "back",
+        "characterId": "verdant_wood_sage"
+      },
+      {
+        "slotIndex": 2,
+        "row": "front",
+        "characterId": "cinder_fire_adept"
+      },
+      {
+        "slotIndex": 3,
+        "row": "front",
+        "characterId": "stone_earth_warden"
+      },
+      {
+        "slotIndex": 4,
+        "row": "front",
+        "characterId": "gleaming_metal_sage"
+      },
+      {
+        "slotIndex": 5,
+        "row": "back",
+        "characterId": "tide_water_diviner"
+      }
+    ]
+  }
+}

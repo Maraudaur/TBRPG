@@ -1,0 +1,1241 @@
+{
+  "kara_emberwright": {
+    "kind": "character",
+    "id": "kara_emberwright",
+    "name": "Kara Emberwright",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "mage",
+    "baseStats": {
+      "maxHp": 80,
+      "maxAp": 30,
+      "atk": 8,
+      "def": 5,
+      "matk": 22,
+      "mdef": 10,
+      "speed": 12,
+      "critChance": 0.05,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "fireball",
+      "mend"
+    ],
+    "gear": {
+      "weapon": "ember_staff",
+      "accessory": "ashborn_ring"
+    }
+  },
+  "bren_ironhide": {
+    "kind": "character",
+    "id": "bren_ironhide",
+    "name": "Bren Ironhide",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "warrior",
+    "baseStats": {
+      "maxHp": 130,
+      "maxAp": 20,
+      "atk": 16,
+      "def": 14,
+      "matk": 4,
+      "mdef": 6,
+      "speed": 8,
+      "critChance": 0.1,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.03
+    },
+    "abilities": [
+      "slash",
+      "cleave"
+    ],
+    "gear": {
+      "weapon": "iron_sword",
+      "armor": "shatterpoint_gauntlets"
+    }
+  },
+  "sae_windrunner": {
+    "kind": "character",
+    "id": "sae_windrunner",
+    "name": "Sae Windrunner",
+    "element": "ice",
+    "level": 5,
+    "xp": 0,
+    "archetype": "ranger",
+    "baseStats": {
+      "maxHp": 95,
+      "maxAp": 22,
+      "atk": 13,
+      "def": 7,
+      "matk": 10,
+      "mdef": 8,
+      "speed": 16,
+      "critChance": 0.15,
+      "critDamage": 1.6,
+      "accuracy": 0.97,
+      "evasion": 0.1
+    },
+    "abilities": [
+      "ice_shard",
+      "slash"
+    ],
+    "gear": {
+      "weapon": "hunters_bow",
+      "armor": "travelers_cloak"
+    }
+  },
+  "ryn_cinderveil": {
+    "kind": "character",
+    "id": "ryn_cinderveil",
+    "name": "Ryn Cinderveil",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "igniter",
+    "baseStats": {
+      "maxHp": 75,
+      "maxAp": 26,
+      "atk": 7,
+      "def": 5,
+      "matk": 21,
+      "mdef": 9,
+      "speed": 13,
+      "critChance": 0.08,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "ember_bolt",
+      "wildfire",
+      "embers_retreat"
+    ],
+    "passives": [
+      "fan_the_flames",
+      "smoldering_wounds",
+      "critical_cinder"
+    ],
+    "gear": {
+      "weapon": "ember_staff"
+    }
+  },
+  "tamsin_ashgrove": {
+    "kind": "character",
+    "id": "tamsin_ashgrove",
+    "name": "Tamsin Ashgrove",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "igniter",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 22,
+      "atk": 14,
+      "def": 8,
+      "matk": 16,
+      "mdef": 7,
+      "speed": 11,
+      "critChance": 0.1,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "kindling_strike",
+      "rekindle"
+    ],
+    "passives": [
+      "fan_the_flames",
+      "flashpoint"
+    ],
+    "gear": {
+      "weapon": "iron_sword"
+    }
+  },
+  "kessa_brightflare": {
+    "kind": "character",
+    "id": "kessa_brightflare",
+    "name": "Kessa Brightflare",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "detonator",
+    "baseStats": {
+      "maxHp": 80,
+      "maxAp": 30,
+      "atk": 6,
+      "def": 5,
+      "matk": 24,
+      "mdef": 10,
+      "speed": 10,
+      "critChance": 0.05,
+      "critDamage": 1.6,
+      "accuracy": 0.96,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "fireball",
+      "combustion",
+      "pyroclasm"
+    ],
+    "passives": [
+      "overflow",
+      "cascading_embers",
+      "kindling_sync",
+      "ashfall"
+    ],
+    "gear": {
+      "weapon": "ember_staff",
+      "accessory": "ashborn_ring"
+    }
+  },
+  "old_maren": {
+    "kind": "character",
+    "id": "old_maren",
+    "name": "Old Maren",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 100,
+      "maxAp": 24,
+      "atk": 5,
+      "def": 9,
+      "matk": 15,
+      "mdef": 12,
+      "speed": 9,
+      "critChance": 0.03,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "second_wind",
+      "stoke_the_fire"
+    ],
+    "passives": [
+      "ashfire_focus",
+      "phoenix_guard",
+      "vanguards_ignition"
+    ],
+    "gear": {
+      "armor": "travelers_cloak"
+    }
+  },
+  "wick_sparrow": {
+    "kind": "character",
+    "id": "wick_sparrow",
+    "name": "Wick Sparrow",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "igniter",
+    "baseStats": {
+      "maxHp": 78,
+      "maxAp": 24,
+      "atk": 7,
+      "def": 6,
+      "matk": 18,
+      "mdef": 8,
+      "speed": 12,
+      "critChance": 0.06,
+      "critDamage": 1.5,
+      "accuracy": 0.94,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "ember_bolt",
+      "wildfire"
+    ],
+    "passives": [
+      "fan_the_flames"
+    ]
+  },
+  "dez_hollow": {
+    "kind": "character",
+    "id": "dez_hollow",
+    "name": "Dez Hollow",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "flex",
+    "baseStats": {
+      "maxHp": 110,
+      "maxAp": 20,
+      "atk": 13,
+      "def": 12,
+      "matk": 10,
+      "mdef": 8,
+      "speed": 8,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.04
+    },
+    "abilities": [
+      "slash",
+      "mend"
+    ],
+    "passives": [
+      "reckless_momentum"
+    ],
+    "gear": {
+      "armor": "shatterpoint_gauntlets"
+    }
+  },
+  "sword_immortal": {
+    "kind": "character",
+    "id": "sword_immortal",
+    "name": "Sword Immortal",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 85,
+      "maxAp": 24,
+      "atk": 22,
+      "def": 7,
+      "matk": 5,
+      "mdef": 6,
+      "speed": 13,
+      "critChance": 0.15,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "myriad_swords",
+      "sword_domain"
+    ],
+    "passives": [
+      "sword_heart_cascade",
+      "flowing_blades"
+    ],
+    "gear": {
+      "weapon": "heart_sword_scabbard"
+    }
+  },
+  "sword_song_cantor": {
+    "kind": "character",
+    "id": "sword_song_cantor",
+    "name": "Sword-Song Cantor",
+    "element": "neutral",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 78,
+      "maxAp": 28,
+      "atk": 6,
+      "def": 5,
+      "matk": 14,
+      "mdef": 10,
+      "speed": 12,
+      "critChance": 0.08,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [],
+    "passives": [
+      "song_of_ten_thousand_edges",
+      "rising_chord"
+    ],
+    "gear": {
+      "weapon": "resonant_guqin"
+    }
+  },
+  "whetstone_warden": {
+    "kind": "character",
+    "id": "whetstone_warden",
+    "name": "Whetstone Warden",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tank",
+    "baseStats": {
+      "maxHp": 145,
+      "maxAp": 20,
+      "atk": 10,
+      "def": 18,
+      "matk": 4,
+      "mdef": 12,
+      "speed": 8,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.92,
+      "evasion": 0.03
+    },
+    "abilities": [
+      "provoking_stance"
+    ],
+    "passives": [
+      "sharpening_duty"
+    ],
+    "gear": {
+      "armor": "grindstone_plate"
+    }
+  },
+  "flying_sword_echo": {
+    "kind": "character",
+    "id": "flying_sword_echo",
+    "name": "Flying-Sword Echo",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 88,
+      "maxAp": 22,
+      "atk": 19,
+      "def": 7,
+      "matk": 5,
+      "mdef": 6,
+      "speed": 14,
+      "critChance": 0.13,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.07
+    },
+    "abilities": [
+      "piercing_thread"
+    ],
+    "passives": [
+      "echoing_blade"
+    ],
+    "gear": {
+      "weapon": "twin_sheath_belt"
+    }
+  },
+  "jade_talisman_adept": {
+    "kind": "character",
+    "id": "jade_talisman_adept",
+    "name": "Jade-Talisman Adept",
+    "element": "holy",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 26,
+      "atk": 5,
+      "def": 6,
+      "matk": 20,
+      "mdef": 11,
+      "speed": 10,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "mending_talisman",
+      "cleansing_rain"
+    ],
+    "passives": [
+      "life_in_the_blade_song"
+    ],
+    "gear": {
+      "accessory": "verdant_sigil"
+    }
+  },
+  "formation_disciple": {
+    "kind": "character",
+    "id": "formation_disciple",
+    "name": "Formation Disciple",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tempo",
+    "baseStats": {
+      "maxHp": 80,
+      "maxAp": 22,
+      "atk": 8,
+      "def": 6,
+      "matk": 8,
+      "mdef": 8,
+      "speed": 16,
+      "critChance": 0.08,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.1
+    },
+    "abilities": [
+      "blade_retreat",
+      "vanguard_call"
+    ],
+    "passives": [
+      "windstep_reserve"
+    ],
+    "gear": {
+      "accessory": "positioning_fan"
+    }
+  },
+  "tribulation_ascendant": {
+    "kind": "character",
+    "id": "tribulation_ascendant",
+    "name": "Tribulation Ascendant",
+    "element": "lightning",
+    "level": 5,
+    "xp": 0,
+    "archetype": "detonator",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 26,
+      "atk": 6,
+      "def": 6,
+      "matk": 23,
+      "mdef": 9,
+      "speed": 11,
+      "critChance": 0.08,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "ninefold_descent",
+      "gathering_cloud"
+    ],
+    "passives": [
+      "court_the_heavens",
+      "storm_fed"
+    ],
+    "gear": {
+      "accessory": "nine_tier_crown"
+    }
+  },
+  "cloud_herald_diviner": {
+    "kind": "character",
+    "id": "cloud_herald_diviner",
+    "name": "Cloud-Herald Diviner",
+    "element": "lightning",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 80,
+      "maxAp": 24,
+      "atk": 5,
+      "def": 5,
+      "matk": 19,
+      "mdef": 9,
+      "speed": 14,
+      "critChance": 0.06,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "spark_rain"
+    ],
+    "passives": [
+      "herald_the_storm"
+    ],
+    "gear": {
+      "accessory": "barometer_beads"
+    }
+  },
+  "grounding_sentinel": {
+    "kind": "character",
+    "id": "grounding_sentinel",
+    "name": "Grounding Sentinel",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tank",
+    "baseStats": {
+      "maxHp": 150,
+      "maxAp": 20,
+      "atk": 9,
+      "def": 19,
+      "matk": 5,
+      "mdef": 16,
+      "speed": 8,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.92,
+      "evasion": 0.03
+    },
+    "abilities": [
+      "earthen_bulwark"
+    ],
+    "passives": [
+      "lightning_rod"
+    ],
+    "gear": {
+      "armor": "iron_root_greaves"
+    }
+  },
+  "thunder_rite_acolyte": {
+    "kind": "character",
+    "id": "thunder_rite_acolyte",
+    "name": "Thunder-Rite Acolyte",
+    "element": "lightning",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 82,
+      "maxAp": 30,
+      "atk": 5,
+      "def": 5,
+      "matk": 17,
+      "mdef": 9,
+      "speed": 12,
+      "critChance": 0.06,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "consecrate"
+    ],
+    "passives": [
+      "feed_the_ascension"
+    ],
+    "gear": {
+      "accessory": "rite_bell"
+    }
+  },
+  "rain_bearer_cleric": {
+    "kind": "character",
+    "id": "rain_bearer_cleric",
+    "name": "Rain-Bearer Cleric",
+    "element": "holy",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 92,
+      "maxAp": 25,
+      "atk": 5,
+      "def": 6,
+      "matk": 19,
+      "mdef": 10,
+      "speed": 10,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "downpour"
+    ],
+    "passives": [
+      "cloudburst_mercy"
+    ],
+    "gear": {
+      "accessory": "monsoon_ewer"
+    }
+  },
+  "sky_reading_adept": {
+    "kind": "character",
+    "id": "sky_reading_adept",
+    "name": "Sky-Reading Adept",
+    "element": "lightning",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tempo",
+    "baseStats": {
+      "maxHp": 76,
+      "maxAp": 22,
+      "atk": 6,
+      "def": 5,
+      "matk": 12,
+      "mdef": 8,
+      "speed": 16,
+      "critChance": 0.1,
+      "critDamage": 1.5,
+      "accuracy": 0.96,
+      "evasion": 0.1
+    },
+    "abilities": [
+      "hasten_the_heavens",
+      "windshift"
+    ],
+    "passives": [
+      "read_the_omens"
+    ],
+    "gear": {
+      "accessory": "astrolabe"
+    }
+  },
+  "blood_sovereign": {
+    "kind": "character",
+    "id": "blood_sovereign",
+    "name": "Blood Sovereign",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 95,
+      "maxAp": 24,
+      "atk": 20,
+      "def": 7,
+      "matk": 5,
+      "mdef": 6,
+      "speed": 11,
+      "critChance": 0.08,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "blood_offering",
+      "crimson_rend",
+      "sever_the_thread"
+    ],
+    "passives": [
+      "qi_deviation_i",
+      "qi_deviation_ii",
+      "feast_on_suffering"
+    ],
+    "gear": {
+      "armor": "heart_blood_regalia"
+    }
+  },
+  "sanguine_herald": {
+    "kind": "character",
+    "id": "sanguine_herald",
+    "name": "Sanguine Herald",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 82,
+      "maxAp": 24,
+      "atk": 6,
+      "def": 5,
+      "matk": 18,
+      "mdef": 9,
+      "speed": 12,
+      "critChance": 0.06,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "crimson_communion"
+    ],
+    "passives": [
+      "shared_wounds"
+    ],
+    "gear": {
+      "accessory": "bloodletting_censer"
+    }
+  },
+  "bone_warden": {
+    "kind": "character",
+    "id": "bone_warden",
+    "name": "Bone Warden",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tank",
+    "baseStats": {
+      "maxHp": 150,
+      "maxAp": 20,
+      "atk": 10,
+      "def": 19,
+      "matk": 4,
+      "mdef": 15,
+      "speed": 8,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.92,
+      "evasion": 0.03
+    },
+    "abilities": [
+      "grave_taunt"
+    ],
+    "passives": [
+      "bulwark_of_bone"
+    ],
+    "gear": {
+      "armor": "ossuary_plate"
+    }
+  },
+  "crimson_acolyte": {
+    "kind": "character",
+    "id": "crimson_acolyte",
+    "name": "Crimson Acolyte",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "detonator",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 22,
+      "atk": 19,
+      "def": 7,
+      "matk": 6,
+      "mdef": 6,
+      "speed": 12,
+      "critChance": 0.12,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "rupture",
+      "bloodspray"
+    ],
+    "passives": [
+      "scent_of_blood"
+    ],
+    "gear": {
+      "weapon": "vein_tap_claws"
+    }
+  },
+  "marrow_priest": {
+    "kind": "character",
+    "id": "marrow_priest",
+    "name": "Marrow Priest",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 24,
+      "atk": 5,
+      "def": 6,
+      "matk": 19,
+      "mdef": 10,
+      "speed": 10,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "blood_transfusion"
+    ],
+    "passives": [
+      "stay_the_reaper"
+    ],
+    "gear": {
+      "accessory": "marrow_chalice"
+    }
+  },
+  "hex_diviner": {
+    "kind": "character",
+    "id": "hex_diviner",
+    "name": "Hex Diviner",
+    "element": "dark",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tempo",
+    "baseStats": {
+      "maxHp": 78,
+      "maxAp": 24,
+      "atk": 6,
+      "def": 5,
+      "matk": 18,
+      "mdef": 8,
+      "speed": 14,
+      "critChance": 0.07,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.07
+    },
+    "abilities": [
+      "curse_of_frailty",
+      "blood_beckon"
+    ],
+    "passives": [
+      "doom_sense"
+    ],
+    "gear": {
+      "accessory": "withering_beads"
+    }
+  },
+  "nine_tailed_matriarch": {
+    "kind": "character",
+    "id": "nine_tailed_matriarch",
+    "name": "Nine-Tailed Matriarch",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 88,
+      "maxAp": 24,
+      "atk": 6,
+      "def": 6,
+      "matk": 21,
+      "mdef": 8,
+      "speed": 17,
+      "critChance": 0.12,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.09
+    },
+    "abilities": [
+      "phantom_step",
+      "illusory_collapse"
+    ],
+    "passives": [
+      "ninefold_afterimage"
+    ],
+    "gear": {
+      "accessory": "ninefold_tail_wrap"
+    }
+  },
+  "mirror_image_disciple": {
+    "kind": "character",
+    "id": "mirror_image_disciple",
+    "name": "Mirror-Image Disciple",
+    "element": "neutral",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 80,
+      "maxAp": 27,
+      "atk": 5,
+      "def": 5,
+      "matk": 15,
+      "mdef": 9,
+      "speed": 15,
+      "critChance": 0.07,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.08
+    },
+    "abilities": [
+      "shared_reflection"
+    ],
+    "passives": [
+      "mirror_dance"
+    ],
+    "gear": {
+      "accessory": "twin_mirror_pendant"
+    }
+  },
+  "vermilion_guard": {
+    "kind": "character",
+    "id": "vermilion_guard",
+    "name": "Vermilion Guard",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tank",
+    "baseStats": {
+      "maxHp": 148,
+      "maxAp": 20,
+      "atk": 14,
+      "def": 18,
+      "matk": 5,
+      "mdef": 13,
+      "speed": 10,
+      "critChance": 0.06,
+      "critDamage": 1.4,
+      "accuracy": 0.93,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "displacing_palm"
+    ],
+    "passives": [
+      "guardians_cadence"
+    ],
+    "gear": {
+      "armor": "warding_fan_shield"
+    }
+  },
+  "illusionist_twin": {
+    "kind": "character",
+    "id": "illusionist_twin",
+    "name": "Illusionist Twin",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "detonator",
+    "baseStats": {
+      "maxHp": 86,
+      "maxAp": 23,
+      "atk": 6,
+      "def": 6,
+      "matk": 20,
+      "mdef": 8,
+      "speed": 14,
+      "critChance": 0.11,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.07
+    },
+    "abilities": [
+      "mirror_burst",
+      "blink_strike"
+    ],
+    "passives": [
+      "echoing_illusions"
+    ],
+    "gear": {
+      "accessory": "phantom_bells"
+    }
+  },
+  "charmer_of_mists": {
+    "kind": "character",
+    "id": "charmer_of_mists",
+    "name": "Charmer of Mists",
+    "element": "neutral",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tempo",
+    "baseStats": {
+      "maxHp": 78,
+      "maxAp": 24,
+      "atk": 6,
+      "def": 5,
+      "matk": 14,
+      "mdef": 10,
+      "speed": 16,
+      "critChance": 0.07,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.08
+    },
+    "abilities": [
+      "beguiling_shift",
+      "foxs_grace"
+    ],
+    "passives": [
+      "disorienting_presence"
+    ],
+    "gear": {
+      "accessory": "beguiling_veil"
+    }
+  },
+  "spirit_fox_healer": {
+    "kind": "character",
+    "id": "spirit_fox_healer",
+    "name": "Spirit-Fox Healer",
+    "element": "holy",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 88,
+      "maxAp": 25,
+      "atk": 5,
+      "def": 6,
+      "matk": 19,
+      "mdef": 10,
+      "speed": 12,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "nine_tails_blessing",
+      "veil_of_renewal"
+    ],
+    "passives": [
+      "restorative_mist"
+    ],
+    "gear": {
+      "accessory": "moonlit_gourd"
+    }
+  },
+  "wuji_taiji_core": {
+    "kind": "character",
+    "id": "wuji_taiji_core",
+    "name": "Wuji Taiji Core",
+    "element": "neutral",
+    "level": 5,
+    "xp": 0,
+    "archetype": "detonator",
+    "baseStats": {
+      "maxHp": 92,
+      "maxAp": 26,
+      "atk": 6,
+      "def": 7,
+      "matk": 22,
+      "mdef": 9,
+      "speed": 11,
+      "critChance": 0.07,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "taiji_nova",
+      "balance_strike"
+    ],
+    "passives": [
+      "convergence_of_five"
+    ],
+    "gear": {
+      "accessory": "taiji_diagram_pendant"
+    }
+  },
+  "verdant_wood_sage": {
+    "kind": "character",
+    "id": "verdant_wood_sage",
+    "name": "Verdant Wood Sage",
+    "element": "neutral",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 86,
+      "maxAp": 26,
+      "atk": 5,
+      "def": 6,
+      "matk": 18,
+      "mdef": 9,
+      "speed": 11,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.05
+    },
+    "abilities": [
+      "verdant_surge"
+    ],
+    "passives": [
+      "flourish"
+    ],
+    "gear": {
+      "weapon": "living_root_staff"
+    }
+  },
+  "cinder_fire_adept": {
+    "kind": "character",
+    "id": "cinder_fire_adept",
+    "name": "Cinder Fire Adept",
+    "element": "fire",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 84,
+      "maxAp": 22,
+      "atk": 6,
+      "def": 6,
+      "matk": 21,
+      "mdef": 7,
+      "speed": 12,
+      "critChance": 0.11,
+      "critDamage": 1.5,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "blaze_cascade",
+      "searing_lance"
+    ],
+    "passives": [
+      "kindle_the_ring"
+    ],
+    "gear": {
+      "accessory": "emberheart_talisman"
+    }
+  },
+  "stone_earth_warden": {
+    "kind": "character",
+    "id": "stone_earth_warden",
+    "name": "Stone Earth Warden",
+    "element": "physical",
+    "level": 5,
+    "xp": 0,
+    "archetype": "tank",
+    "baseStats": {
+      "maxHp": 150,
+      "maxAp": 20,
+      "atk": 9,
+      "def": 20,
+      "matk": 4,
+      "mdef": 16,
+      "speed": 8,
+      "critChance": 0.05,
+      "critDamage": 1.4,
+      "accuracy": 0.92,
+      "evasion": 0.03
+    },
+    "abilities": [
+      "tectonic_guard"
+    ],
+    "passives": [
+      "steadfast_ground"
+    ],
+    "gear": {
+      "armor": "mountain_root_aegis"
+    }
+  },
+  "gleaming_metal_sage": {
+    "kind": "character",
+    "id": "gleaming_metal_sage",
+    "name": "Gleaming Metal Sage",
+    "element": "holy",
+    "level": 5,
+    "xp": 0,
+    "archetype": "carry",
+    "baseStats": {
+      "maxHp": 90,
+      "maxAp": 22,
+      "atk": 20,
+      "def": 8,
+      "matk": 5,
+      "mdef": 6,
+      "speed": 13,
+      "critChance": 0.13,
+      "critDamage": 1.55,
+      "accuracy": 0.95,
+      "evasion": 0.06
+    },
+    "abilities": [
+      "thousand_edge_cut"
+    ],
+    "passives": [
+      "sharpened_cycle"
+    ],
+    "gear": {
+      "weapon": "whitegold_edge"
+    }
+  },
+  "tide_water_diviner": {
+    "kind": "character",
+    "id": "tide_water_diviner",
+    "name": "Tide Water Diviner",
+    "element": "ice",
+    "level": 5,
+    "xp": 0,
+    "archetype": "support",
+    "baseStats": {
+      "maxHp": 84,
+      "maxAp": 24,
+      "atk": 5,
+      "def": 6,
+      "matk": 18,
+      "mdef": 9,
+      "speed": 15,
+      "critChance": 0.06,
+      "critDamage": 1.4,
+      "accuracy": 0.95,
+      "evasion": 0.07
+    },
+    "abilities": [
+      "tidal_slow",
+      "nourishing_wave"
+    ],
+    "passives": [
+      "flowing_return"
+    ],
+    "gear": {
+      "accessory": "deepcurrent_pearl"
+    }
+  }
+}

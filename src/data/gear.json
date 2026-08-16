@@ -1,0 +1,1449 @@
+{
+  "ashborn_ring": {
+    "id": "ashborn_ring",
+    "name": "Ashborn Ring",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 5,
+        "source": "Ashborn Ring"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "ashborn_shatter",
+        "name": "Ashborn Ring: Combustion",
+        "trigger": "OnDamageDealt",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "hasStatus",
+            "target": "target",
+            "status": "burn",
+            "min": 1
+          }
+        ],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "target",
+            "status": "burn",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "stacksConsumed * 5",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "shatterpoint_gauntlets": {
+    "id": "shatterpoint_gauntlets",
+    "name": "Shatterpoint Gauntlets",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 3,
+        "source": "Shatterpoint Gauntlets"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "shatterpoint_combo",
+        "name": "Shatterpoint Gauntlets: Shatter",
+        "trigger": "OnDamageDealt",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "element",
+            "value": "fire"
+          },
+          {
+            "type": "hasStatus",
+            "target": "target",
+            "status": "frost",
+            "min": 1
+          }
+        ],
+        "effects": [
+          {
+            "type": "ConsumeStatus",
+            "target": "target",
+            "status": "frost",
+            "count": "all"
+          },
+          {
+            "type": "DealDamage",
+            "target": "target",
+            "formula": "stacksConsumed * 6",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "ember_staff": {
+    "id": "ember_staff",
+    "name": "Ember Staff",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 8,
+        "source": "Ember Staff"
+      }
+    ]
+  },
+  "iron_sword": {
+    "id": "iron_sword",
+    "name": "Iron Sword",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 6,
+        "source": "Iron Sword"
+      }
+    ]
+  },
+  "travelers_cloak": {
+    "id": "travelers_cloak",
+    "name": "Traveler's Cloak",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 4,
+        "source": "Traveler's Cloak"
+      },
+      {
+        "stat": "evasion",
+        "type": "percentAdd",
+        "value": 0.05,
+        "source": "Traveler's Cloak"
+      }
+    ]
+  },
+  "hunters_bow": {
+    "id": "hunters_bow",
+    "name": "Hunter's Bow",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 5,
+        "source": "Hunter's Bow"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 2,
+        "source": "Hunter's Bow"
+      }
+    ]
+  },
+  "heart_sword_scabbard": {
+    "id": "heart_sword_scabbard",
+    "name": "Heart-Sword Scabbard",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.12,
+        "source": "Heart-Sword Scabbard"
+      },
+      {
+        "stat": "critDamage",
+        "type": "flat",
+        "value": 0.3,
+        "source": "Heart-Sword Scabbard"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 8,
+        "source": "Heart-Sword Scabbard"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "heart_sword_scabbard_refund",
+        "name": "Heart-Sword Scabbard",
+        "trigger": "OnDamageDealt",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "wasCrit"
+          },
+          {
+            "type": "chance",
+            "probability": 0.15
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "resonant_guqin": {
+    "id": "resonant_guqin",
+    "name": "Resonant Guqin",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 3,
+        "source": "Resonant Guqin"
+      },
+      {
+        "stat": "mdef",
+        "type": "flat",
+        "value": 10,
+        "source": "Resonant Guqin"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "resonant_guqin_tempo",
+        "name": "Resonant Guqin",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "speed",
+            "modType": "percentAdd",
+            "value": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  "grindstone_plate": {
+    "id": "grindstone_plate",
+    "name": "Grindstone Plate",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 250,
+        "source": "Grindstone Plate"
+      },
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 25,
+        "source": "Grindstone Plate"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "grindstone_plate_ramp",
+        "name": "Grindstone Plate",
+        "trigger": "OnDamageTaken",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.05,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "twin_sheath_belt": {
+    "id": "twin_sheath_belt",
+    "name": "Twin-Sheath Belt",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 30,
+        "source": "Twin-Sheath Belt"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.1,
+        "source": "Twin-Sheath Belt"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "twin_sheath_belt_mark",
+        "name": "Twin-Sheath Belt",
+        "trigger": "OnDamageDealt",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "wasCrit"
+          },
+          {
+            "type": "chance",
+            "probability": 0.2
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "sword_wound",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "verdant_sigil": {
+    "id": "verdant_sigil",
+    "name": "Verdant Sigil",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 25,
+        "source": "Verdant Sigil"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 150,
+        "source": "Verdant Sigil"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "verdant_sigil_topoff",
+        "name": "Verdant Sigil",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "self",
+            "formula": "matk * 0.3"
+          }
+        ]
+      }
+    ]
+  },
+  "positioning_fan": {
+    "id": "positioning_fan",
+    "name": "Positioning Fan",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 12,
+        "source": "Positioning Fan"
+      },
+      {
+        "stat": "evasion",
+        "type": "flat",
+        "value": 0.08,
+        "source": "Positioning Fan"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "positioning_fan_dodge",
+        "name": "Positioning Fan",
+        "trigger": "OnRowChanged",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "evasion",
+            "modType": "percentAdd",
+            "value": 0.25,
+            "duration": 1
+          }
+        ]
+      }
+    ]
+  },
+  "nine_tier_crown": {
+    "id": "nine_tier_crown",
+    "name": "Nine-Tier Crown",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 40,
+        "source": "Nine-Tier Crown"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 200,
+        "source": "Nine-Tier Crown"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "nine_tier_crown_charge",
+        "name": "Nine-Tier Crown",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "tribulation",
+            "stacks": 2,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "barometer_beads": {
+    "id": "barometer_beads",
+    "name": "Barometer Beads",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 4,
+        "source": "Barometer Beads"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 6,
+        "source": "Barometer Beads"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "barometer_beads_surge",
+        "name": "Barometer Beads",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.12
+          }
+        ]
+      }
+    ]
+  },
+  "iron_root_greaves": {
+    "id": "iron_root_greaves",
+    "name": "Iron Root Greaves",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 300,
+        "source": "Iron Root Greaves"
+      },
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 30,
+        "source": "Iron Root Greaves"
+      },
+      {
+        "stat": "mdef",
+        "type": "flat",
+        "value": 30,
+        "source": "Iron Root Greaves"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "iron_root_greaves_brace",
+        "name": "Iron Root Greaves",
+        "trigger": "OnHPThresholdCrossed",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.5,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "rite_bell": {
+    "id": "rite_bell",
+    "name": "Rite Bell",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 30,
+        "source": "Rite Bell"
+      },
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 3,
+        "source": "Rite Bell"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "rite_bell_toll",
+        "name": "Rite Bell",
+        "trigger": "OnStatusApplied",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "monsoon_ewer": {
+    "id": "monsoon_ewer",
+    "name": "Monsoon Ewer",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 25,
+        "source": "Monsoon Ewer"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 150,
+        "source": "Monsoon Ewer"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "monsoon_ewer_drizzle",
+        "name": "Monsoon Ewer",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.25"
+          }
+        ]
+      }
+    ]
+  },
+  "astrolabe": {
+    "id": "astrolabe",
+    "name": "Astrolabe",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 14,
+        "source": "Astrolabe"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.08,
+        "source": "Astrolabe"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "astrolabe_reading",
+        "name": "Astrolabe",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  "heart_blood_regalia": {
+    "id": "heart_blood_regalia",
+    "name": "Heart-Blood Regalia",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 45,
+        "source": "Heart-Blood Regalia"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 260,
+        "source": "Heart-Blood Regalia"
+      },
+      {
+        "stat": "critDamage",
+        "type": "flat",
+        "value": 0.3,
+        "source": "Heart-Blood Regalia"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "heart_blood_regalia_deviation",
+        "name": "Heart-Blood Regalia",
+        "trigger": "OnHPThresholdCrossed",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.25
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.25
+          }
+        ]
+      }
+    ]
+  },
+  "bloodletting_censer": {
+    "id": "bloodletting_censer",
+    "name": "Bloodletting Censer",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 30,
+        "source": "Bloodletting Censer"
+      },
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 3,
+        "source": "Bloodletting Censer"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "bloodletting_censer_rite",
+        "name": "Bloodletting Censer",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "atk",
+            "modType": "percentAdd",
+            "value": 0.15
+          }
+        ]
+      }
+    ]
+  },
+  "ossuary_plate": {
+    "id": "ossuary_plate",
+    "name": "Ossuary Plate",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 340,
+        "source": "Ossuary Plate"
+      },
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 30,
+        "source": "Ossuary Plate"
+      },
+      {
+        "stat": "mdef",
+        "type": "flat",
+        "value": 26,
+        "source": "Ossuary Plate"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "ossuary_plate_brace",
+        "name": "Ossuary Plate",
+        "trigger": "OnHPThresholdCrossed",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          },
+          {
+            "type": "statCompare",
+            "target": "self",
+            "stat": "hpPercent",
+            "op": "<=",
+            "value": 0.5
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.5,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "vein_tap_claws": {
+    "id": "vein_tap_claws",
+    "name": "Vein-Tap Claws",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 38,
+        "source": "Vein-Tap Claws"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.1,
+        "source": "Vein-Tap Claws"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "vein_tap_claws_mark",
+        "name": "Vein-Tap Claws",
+        "trigger": "OnDamageDealt",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "target",
+            "status": "hemorrhage",
+            "stacks": 1,
+            "duration": 3
+          }
+        ]
+      }
+    ]
+  },
+  "marrow_chalice": {
+    "id": "marrow_chalice",
+    "name": "Marrow Chalice",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 28,
+        "source": "Marrow Chalice"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 170,
+        "source": "Marrow Chalice"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "marrow_chalice_drip",
+        "name": "Marrow Chalice",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "allAllies",
+            "formula": "matk * 0.18"
+          }
+        ]
+      }
+    ]
+  },
+  "withering_beads": {
+    "id": "withering_beads",
+    "name": "Withering Beads",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 30,
+        "source": "Withering Beads"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 12,
+        "source": "Withering Beads"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "withering_beads_shred",
+        "name": "Withering Beads",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allEnemies",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": -0.15
+          }
+        ]
+      }
+    ]
+  },
+  "ninefold_tail_wrap": {
+    "id": "ninefold_tail_wrap",
+    "name": "Ninefold Tail-Wrap",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 16,
+        "source": "Ninefold Tail-Wrap"
+      },
+      {
+        "stat": "evasion",
+        "type": "flat",
+        "value": 0.12,
+        "source": "Ninefold Tail-Wrap"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.1,
+        "source": "Ninefold Tail-Wrap"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "ninefold_tail_wrap_bank",
+        "name": "Ninefold Tail-Wrap",
+        "trigger": "OnRowChanged",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "fox_fire",
+            "stacks": 2,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "twin_mirror_pendant": {
+    "id": "twin_mirror_pendant",
+    "name": "Twin-Mirror Pendant",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 4,
+        "source": "Twin-Mirror Pendant"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 10,
+        "source": "Twin-Mirror Pendant"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "twin_mirror_pendant_shimmer",
+        "name": "Twin-Mirror Pendant",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "evasion",
+            "modType": "flat",
+            "value": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  "warding_fan_shield": {
+    "id": "warding_fan_shield",
+    "name": "Warding Fan-Shield",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 300,
+        "source": "Warding Fan-Shield"
+      },
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 28,
+        "source": "Warding Fan-Shield"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "warding_fan_shield_brace",
+        "name": "Warding Fan-Shield",
+        "trigger": "OnRowChanged",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "self",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.2,
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "phantom_bells": {
+    "id": "phantom_bells",
+    "name": "Phantom Bells",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 36,
+        "source": "Phantom Bells"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.1,
+        "source": "Phantom Bells"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "phantom_bells_bank",
+        "name": "Phantom Bells",
+        "trigger": "OnRowChanged",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "fox_fire",
+            "stacks": 1,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "beguiling_veil": {
+    "id": "beguiling_veil",
+    "name": "Beguiling Veil",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 14,
+        "source": "Beguiling Veil"
+      },
+      {
+        "stat": "mdef",
+        "type": "flat",
+        "value": 22,
+        "source": "Beguiling Veil"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "beguiling_veil_haze",
+        "name": "Beguiling Veil",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "speed",
+            "modType": "percentMult",
+            "value": 0.12
+          }
+        ]
+      }
+    ]
+  },
+  "moonlit_gourd": {
+    "id": "moonlit_gourd",
+    "name": "Moonlit Gourd",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 28,
+        "source": "Moonlit Gourd"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 160,
+        "source": "Moonlit Gourd"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "moonlit_gourd_dew",
+        "name": "Moonlit Gourd",
+        "trigger": "OnRowChanged",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "teammate",
+            "target": "target"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "target",
+            "formula": "matk * 0.4"
+          }
+        ]
+      }
+    ]
+  },
+  "taiji_diagram_pendant": {
+    "id": "taiji_diagram_pendant",
+    "name": "Taiji Diagram Pendant",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 40,
+        "source": "Taiji Diagram Pendant"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 220,
+        "source": "Taiji Diagram Pendant"
+      },
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 3,
+        "source": "Taiji Diagram Pendant"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "taiji_diagram_pendant_charge",
+        "name": "Taiji Diagram Pendant",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ApplyStatus",
+            "target": "self",
+            "status": "wuxing_harmony",
+            "stacks": 1,
+            "duration": 99
+          }
+        ]
+      }
+    ]
+  },
+  "living_root_staff": {
+    "id": "living_root_staff",
+    "name": "Living-Root Staff",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 26,
+        "source": "Living-Root Staff"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 180,
+        "source": "Living-Root Staff"
+      },
+      {
+        "stat": "maxAp",
+        "type": "flat",
+        "value": 3,
+        "source": "Living-Root Staff"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "living_root_staff_growth",
+        "name": "Living-Root Staff",
+        "trigger": "OnTurnStart",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyAP",
+            "target": "allAllies",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "emberheart_talisman": {
+    "id": "emberheart_talisman",
+    "name": "Emberheart Talisman",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 38,
+        "source": "Emberheart Talisman"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.1,
+        "source": "Emberheart Talisman"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "emberheart_talisman_kindle",
+        "name": "Emberheart Talisman",
+        "trigger": "OnAbilityCast",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "matk",
+            "modType": "percentMult",
+            "value": 0.06,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "mountain_root_aegis": {
+    "id": "mountain_root_aegis",
+    "name": "Mountain-Root Aegis",
+    "slot": "armor",
+    "statModifiers": [
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 320,
+        "source": "Mountain-Root Aegis"
+      },
+      {
+        "stat": "def",
+        "type": "flat",
+        "value": 30,
+        "source": "Mountain-Root Aegis"
+      },
+      {
+        "stat": "mdef",
+        "type": "flat",
+        "value": 26,
+        "source": "Mountain-Root Aegis"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "mountain_root_aegis_bulwark",
+        "name": "Mountain-Root Aegis",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "def",
+            "modType": "percentAdd",
+            "value": 0.18
+          }
+        ]
+      }
+    ]
+  },
+  "whitegold_edge": {
+    "id": "whitegold_edge",
+    "name": "Whitegold Edge",
+    "slot": "weapon",
+    "statModifiers": [
+      {
+        "stat": "atk",
+        "type": "flat",
+        "value": 40,
+        "source": "Whitegold Edge"
+      },
+      {
+        "stat": "critChance",
+        "type": "flat",
+        "value": 0.12,
+        "source": "Whitegold Edge"
+      },
+      {
+        "stat": "critDamage",
+        "type": "flat",
+        "value": 0.25,
+        "source": "Whitegold Edge"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "whitegold_edge_hone",
+        "name": "Whitegold Edge",
+        "trigger": "OnAbilityCast",
+        "priority": 10,
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "critChance",
+            "modType": "flat",
+            "value": 0.06,
+            "duration": 4
+          }
+        ]
+      }
+    ]
+  },
+  "deepcurrent_pearl": {
+    "id": "deepcurrent_pearl",
+    "name": "Deepcurrent Pearl",
+    "slot": "accessory",
+    "statModifiers": [
+      {
+        "stat": "matk",
+        "type": "flat",
+        "value": 30,
+        "source": "Deepcurrent Pearl"
+      },
+      {
+        "stat": "speed",
+        "type": "flat",
+        "value": 12,
+        "source": "Deepcurrent Pearl"
+      },
+      {
+        "stat": "maxHp",
+        "type": "flat",
+        "value": 150,
+        "source": "Deepcurrent Pearl"
+      }
+    ],
+    "bindings": [
+      {
+        "id": "deepcurrent_pearl_current",
+        "name": "Deepcurrent Pearl",
+        "trigger": "OnBattleStart",
+        "priority": 10,
+        "conditions": [],
+        "effects": [
+          {
+            "type": "ModifyStat",
+            "target": "allAllies",
+            "stat": "speed",
+            "modType": "percentMult",
+            "value": 0.1
+          }
+        ]
+      }
+    ]
+  }
+}
