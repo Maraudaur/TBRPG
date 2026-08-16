@@ -1,18 +1,13 @@
+// ============================================================================
+// Enemy-party data. The actual data lives in `enemyParties.json` (a plain
+// id-keyed map) so it can be safely read AND written by the local dev-server
+// data API (see vite.config.ts) — the in-app builder screens' "Save" button
+// writes straight back into that JSON file, so the file on disk is always
+// the true, current source of data, not something Claude has to keep in
+// sync by hand.
+// ============================================================================
+
 import type { EnemyParty } from '../sim/types';
+import enemyPartiesJson from './enemyParties.json';
 
-export const DEFAULT_ENEMY_PARTY: EnemyParty = {
-  id: 'default_enemy_party',
-  name: 'Default Enemy Party',
-  slots: [
-    { slotIndex: 0, row: 'front', enemyId: 'frost_wraith' },
-    { slotIndex: 1, row: 'front', enemyId: 'goblin_brute' },
-    { slotIndex: 2, row: 'front', enemyId: null },
-    { slotIndex: 3, row: 'back', enemyId: null },
-    { slotIndex: 4, row: 'back', enemyId: null },
-    { slotIndex: 5, row: 'back', enemyId: null },
-  ],
-};
-
-export const ENEMY_PARTIES: Record<string, EnemyParty> = {
-  default_enemy_party: DEFAULT_ENEMY_PARTY,
-};
+export const ENEMY_PARTIES: Record<string, EnemyParty> = enemyPartiesJson as Record<string, EnemyParty>;

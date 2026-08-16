@@ -33,3 +33,9 @@ npm run dev
 Then open the local URL it prints (usually `http://localhost:5173`).
 
 Other useful scripts: `npm run test` (unit tests), `npm run headless` (runs a hardcoded battle straight from the terminal, useful for sanity-checking the engine without the UI), `npm run build` (production build).
+
+## Saving your work
+
+Every character, ability, passive, gear item, status, and party lives in a plain data file under `src/data/` (e.g. `src/data/abilities.json`). Editing something in a builder screen and clicking **Save** writes straight back into that exact file — there's no separate hidden copy that can fall out of sync. Every time you open the app, it reads fresh from those same files, so you'll always see the latest version whether it was changed through the app or edited directly in the code.
+
+This live saving only works while the app is running through its own dev server — i.e. the normal way you use it, via `Run Battle Sim.bat` or `npm run dev`.

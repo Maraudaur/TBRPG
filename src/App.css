@@ -53,7 +53,7 @@
 
 .builder-screen {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 16px;
   align-items: start;
 }
@@ -65,6 +65,8 @@
   padding: 12px;
   position: sticky;
   top: 0;
+  max-height: 92vh;
+  overflow-y: auto;
 }
 
 .builder-list ul {
@@ -92,6 +94,62 @@
 .builder-list li.selected {
   background: var(--accent-bg);
   font-weight: 600;
+}
+
+.builder-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.builder-search {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.builder-filter-row {
+  display: flex;
+  gap: 6px;
+}
+
+.builder-filter-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+.builder-filter-count {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.builder-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.builder-item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.builder-item-meta {
+  font-size: 10px;
+  opacity: 0.6;
+  text-transform: capitalize;
+}
+
+.builder-empty {
+  opacity: 0.6;
+  font-size: 12px;
+  padding: 6px 8px;
+  cursor: default;
 }
 
 .builder-form {
@@ -902,8 +960,8 @@ input, select {
   background: var(--panel-bg);
   border-radius: 10px;
   padding: 20px;
-  width: 420px;
-  max-width: 90vw;
+  width: 680px;
+  max-width: 92vw;
   max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
@@ -975,6 +1033,39 @@ input, select {
 
 .unit-detail-list li.mod-neutral {
   border-left-color: #999;
+}
+
+.unit-detail-passives {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.unit-detail-passive {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.unit-detail-passive-name {
+  font-weight: 600;
+}
+
+.unit-detail-passive-desc {
+  margin: 4px 0;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.unit-detail-passive-effects {
+  margin: 4px 0 0;
+  padding-left: 16px;
+}
+
+.unit-detail-passive-effects li {
+  margin-bottom: 3px;
 }
 
 .log-scroll {

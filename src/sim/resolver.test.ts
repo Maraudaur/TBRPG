@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { EventBus } from './eventBus';
 import { attachResolver, evaluateCondition, executeEffect } from './resolver';
 import type { BattleState, BattleUnit } from './runtime';
-import { ASHBORN_RING } from '../data/gear';
+import { GEAR_ITEMS } from '../data/gear';
 import { STATUS_DEFS } from '../data/statuses';
+
+const ASHBORN_RING = GEAR_ITEMS.ashborn_ring;
 import type { Condition, StatBlock } from './types';
 
 function makeStats(overrides: Partial<StatBlock> = {}): StatBlock {

@@ -1,0 +1,112 @@
+{
+  "burn": {
+    "id": "burn",
+    "name": "Burn",
+    "description": "Deals fire damage equal to 3x stacks at the start of the holder's turn.",
+    "stackable": true,
+    "maxStacks": 99,
+    "defaultDuration": 3,
+    "bindings": [
+      {
+        "id": "burn_tick",
+        "name": "Burn tick",
+        "trigger": "OnTurnStart",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "DealDamage",
+            "target": "self",
+            "formula": "stacks * 3",
+            "element": "fire"
+          }
+        ]
+      }
+    ]
+  },
+  "frost": {
+    "id": "frost",
+    "name": "Frost",
+    "description": "No effect on its own — a resource stat consumed by \"shatter\" combos for bonus fire damage.",
+    "stackable": true,
+    "maxStacks": 99,
+    "defaultDuration": 3
+  },
+  "regen": {
+    "id": "regen",
+    "name": "Regeneration",
+    "description": "Heals a flat amount at the start of the holder's turn.",
+    "stackable": false,
+    "defaultDuration": 3,
+    "bindings": [
+      {
+        "id": "regen_tick",
+        "name": "Regen tick",
+        "trigger": "OnTurnStart",
+        "conditions": [
+          {
+            "type": "self"
+          }
+        ],
+        "effects": [
+          {
+            "type": "Heal",
+            "target": "self",
+            "formula": "15"
+          }
+        ]
+      }
+    ]
+  },
+  "tribulation": {
+    "id": "tribulation",
+    "name": "Tribulation",
+    "description": "Banked lightning charge on the Tribulation Ascendant (Party 2). Funneled by allies acting and by the Ascendant taking damage; consumed by Ninefold Descent for a stacksConsumed-scaled detonation.",
+    "stackable": true,
+    "maxStacks": 200,
+    "defaultDuration": 99
+  },
+  "hemorrhage": {
+    "id": "hemorrhage",
+    "name": "Hemorrhage",
+    "description": "Bleed-marker banked on enemies by the Blood-Path Demon Cultivator party (Party 5). Consumed by Rupture for a stacksConsumed-scaled detonation.",
+    "stackable": true,
+    "maxStacks": 60,
+    "defaultDuration": 3
+  },
+  "fox_fire": {
+    "id": "fox_fire",
+    "name": "Fox Fire",
+    "description": "Banked spirit-flame charge for the Nine-Tailed Fox Illusionist party (Party 6). Built by row changes; consumed by Illusory Collapse / Mirror Burst for stacksConsumed-scaled detonations.",
+    "stackable": true,
+    "maxStacks": 60,
+    "defaultDuration": 4
+  },
+  "wuxing_harmony": {
+    "id": "wuxing_harmony",
+    "name": "Wuxing Harmony",
+    "description": "Banked convergence charge on the Wuji Taiji Core (Party 7). Funneled by every elementalist acting; consumed by Taiji Nova for a stacksConsumed-scaled detonation.",
+    "stackable": true,
+    "maxStacks": 150,
+    "defaultDuration": 99
+  },
+  "sword_wound": {
+    "id": "sword_wound",
+    "name": "Sword Wound",
+    "description": "Marking counter applied by the Flying-Sword Echo (Party 1) on a crit. A resource other kits can read via hasStatus.",
+    "stackable": true,
+    "maxStacks": 20,
+    "defaultDuration": 3
+  },
+  "grounded": {
+    "id": "grounded",
+    "name": "Grounded",
+    "description": "Marking counter applied by the Grounding Sentinel (Party 2) to whoever hits it.",
+    "stackable": true,
+    "maxStacks": 20,
+    "defaultDuration": 2
+  }
+}
